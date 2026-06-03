@@ -70,7 +70,7 @@ if ($action=="modify")
 		$qvalues = array();
 		foreach ($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_column_defs'] as $key => $value){
 			if (isset($_POST[$key])){
-	        	$updatestring=$updatestring.$key."=?,";
+	        	$updatestring=$updatestring.tviewer_quote_identifier($key)."=?,";
 				if ($value['type'] == "checklist") {
 					$val = build_custom_checklist_options($_POST[$key], $value);
 				} else {
@@ -89,7 +89,7 @@ if ($action=="modify")
 		if (isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['pre_edit_hook']))
 			$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['pre_edit_hook']($updatestring, $qvalues);
 
-		$sql = "UPDATE ".$table." SET ".$updatestring." WHERE ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key']."=?";
+		$sql = "UPDATE ".tviewer_quote_identifier($table)." SET ".$updatestring." WHERE ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key'])."=?";
 
 		$stm = $link->prepare($sql);
 		$ret = $stm->execute($qvalues);

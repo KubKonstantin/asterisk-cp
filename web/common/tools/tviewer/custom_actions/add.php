@@ -65,7 +65,7 @@ if ($action=="add_verify")
 	$values_arr = array();
 	foreach ($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_column_defs'] as $key => $value){
 		if (isset($_POST[$key])){
-			$fields.=$key.",";
+			$fields.=tviewer_quote_identifier($key).",";
 			$values.="?,";
 			if ($value['type'] == "checklist") {
 				$val = build_custom_checklist_options($_POST[$key], $value);
@@ -78,7 +78,7 @@ if ($action=="add_verify")
 				$values_arr[] = $val;
 		}
 		else if (isset($value["default_value"])){
-			$fields.=$key.",";
+			$fields.=tviewer_quote_identifier($key).",";
 			$values.="?,";
 			$values_arr[] = $value["default_value"];
 		}
@@ -93,7 +93,7 @@ if ($action=="add_verify")
 			if (isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['pre_add_hook']))
 				$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['pre_add_hook']($fields, $values);
 
-			$sql = "INSERT INTO ".$table."(".$fields.") VALUES(".$values.") ";
+			$sql = "INSERT INTO ".tviewer_quote_identifier($table)."(".$fields.") VALUES(".$values.") ";
 			$stm = $link->prepare($sql);
 			$ret = $stm->execute($values_arr);
 			if (isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['post_add_hook']))

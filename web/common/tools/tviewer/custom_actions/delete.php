@@ -9,7 +9,7 @@ if ($action=="delete"){
 			$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['pre_delete_hook']($id);
 
 		$id=$_GET[$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key']];
-		$sql = "DELETE FROM ".$table." WHERE ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key']."=?";
+		$sql = "DELETE FROM ".tviewer_quote_identifier($table)." WHERE ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key'])."=?";
 
 		$stm = $link->prepare($sql);
 		$ret = $stm->execute(array($id));
