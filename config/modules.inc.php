@@ -39,142 +39,16 @@ $config_admin_modules = array (
 );
 
 $config_modules 	= array (
-	"dashboard"		=> array (
+	"asterisk"		=> array (
 		"enabled"	=> true,
-		"name"		=> "Dashboard",
-		"icon"		=> "images/icon-dashboard.png",
-		"modules"	=> array (
-			"dashboard"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Dashboard",
-				"path"			=> "system/dashboard"
-			),
-		)
-	),
-	"users"			=> array (
-		"enabled" 	=> true,
-		"name" 		=> "Users",
-		"icon"		=> "images/icon-user.svg",
-		"modules"	=> array (
-			"user_management"	=> array (
-				"enabled"		=> true,
-				"name"			=> "User Management"
-			),
-			"alias_management"	=> array (
-				"enabled"		=> true,
-				"name"			=> "Alias Management"
-			),
-			"group_management"	=> array (
-				"enabled"		=> true,
-				"name"			=> "Group Management"
-			),
-		)
-	),
-	"system"		=> array (
-		"enabled"	=> true,
-		"name"		=> "System",
+		"name"		=> "Asterisk",
 		"icon"		=> "images/icon-system.svg",
 		"modules"	=> array (
-			"addresses"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Addresses"
+			"realtime"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Realtime Tables",
+				"path"		=> "asterisk/realtime"
 			),
-			"config"		=> array (
-				"enabled"		=> true,
-				"name"			=> "Config"
-			),
-			"callcenter"		=> array (
-				"enabled"		=> true,
-				"name"			=> "Callcenter"
-			),
-			"cdrviewer"			=> array (
-				"enabled"		=> true,
-				"name"			=> "CDR Viewer"
-			),
-			"dialog"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Dialog"
-			),
-			"dialplan"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Dialplan"
-			),
-			"dispatcher"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Dispatcher"
-			),
-			"domains"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Domains"
-			),
-			"drouting"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Dynamic Routing"
-			),
-			"clusterer"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Clusterer"
-			),
-			"keepalived"		=> array (
-				"enabled"		=> true,
-				"name"			=> "Keepalived"
-			),
-			"loadbalancer"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Load Balancer"
-			),
-			"mi"				=> array (
-				"enabled"		=> true,
-				"name"			=> "MI Commands"
-			),
-			"monit"				=> array (
-				"enabled"		=> true,
-				"name"			=> "Monit"
-			),
-			"rtpproxy"			=> array (
-				"enabled"		=> true,
-				"name"			=> "RTPProxy"
-			),
-			"rtpengine"			=> array (
-				"enabled"		=> true,
-				"name"			=> "RTPEngine"
-			),
-			"siptrace"			=> array (
-				"enabled"		=> true,
-				"name"			=> "SIP Trace"
-			),
-			"smonitor"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Statistics Monitor"
-			),
-			"statusreport"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Status Report"
-			),
-			"tls_mgm"			=> array (
-				"enabled"		=> true,
-				"name"			=> "TLS Management"
-			),
-			"uac_registrant"		=> array (
-				"enabled"		=> true,
-				"name"			=> "UAC Registrant"
-			),
-			"sockets_mgm"			=> array (
-				"enabled"		=> true,
-				"name"			=> "Sockets Management"
-			),
-			"smpp"				=> array (
-				"enabled"		=> true,
-				"name"			=> "SMPP Gateway"
-			),
-			"tcp_mgm"			=> array (
-				"enabled"		=> true,
-				"name"			=> "TCP Management"
-			),
-			"tracer"				=> array (
-				"enabled"		=> true,
-				"name"			=> "Tracer"
-            ),
 		)
 	),
 	"asterisk"		=> array (
