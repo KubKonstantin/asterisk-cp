@@ -20,6 +20,23 @@
 * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
+
+function tviewer_quote_identifier($identifier)
+{
+	$identifier = (string)$identifier;
+	if ($identifier === '*')
+		return $identifier;
+	return "`".str_replace("`", "``", $identifier)."`";
+}
+
+function tviewer_quote_identifier_list($identifiers)
+{
+	$quoted = array();
+	foreach ($identifiers as $identifier)
+		$quoted[] = tviewer_quote_identifier($identifier);
+	return $quoted;
+}
+
 function build_unique_check_query($custom_config,$table,$post_data,$id=NULL){
 	$build_query = NULL;
 	$build_mul = NULL;
@@ -29,17 +46,17 @@ function build_unique_check_query($custom_config,$table,$post_data,$id=NULL){
 		if (isset($value['show_in_add_form']) && $value['show_in_add_form'] == true && isset($value['key']) && in_array($value['key'],array("PRI","UNI","MUL")) ){
 			switch ($value['key']) {
 				case "PRI":
-					$build_query = ($build_query == NULL) ? " ".$key."=?" : " OR ".$key."=?";
+					$build_query = ($build_query == NULL) ? " ".tviewer_quote_identifier($key)."=?" : " OR ".tviewer_quote_identifier($key)."=?";
 					$query_vals[] = $post_data[$key];
 					break;
 
 				case "UNI":
-					$build_query = ($build_query == NULL) ? " ".$key."=?" : " OR ".$key."=?";
+					$build_query = ($build_query == NULL) ? " ".tviewer_quote_identifier($key)."=?" : " OR ".tviewer_quote_identifier($key)."=?";
 					$query_vals[] = $post_data[$key];
 					break;
 
 				case "MUL":
-					$build_mul .= ($build_mul == NULL) ? " ( ".$key."=?" : " AND ".$key."=?";
+					$build_mul .= ($build_mul == NULL) ? " ( ".tviewer_quote_identifier($key)."=?" : " AND ".tviewer_quote_identifier($key)."=?";
 					$mul_vals[] = $post_data[$key];
 			}
 		}
@@ -53,14 +70,14 @@ function build_unique_check_query($custom_config,$table,$post_data,$id=NULL){
 	}
 
 	if ($build_query != NULL || $build_mul != NULL){
-		$query = "select count(*) from ".$table." where";
+		$query = "select count(*) from ".tviewer_quote_identifier($table)." where";
 		$query .= $build_query;
 		if ($build_query != NULL && $build_mul != NULL){
 			$build_mul = " OR ".$build_mul;
 		}
 		$query .= $build_mul;
 		if ($id != NULL){
-			$query .= " AND ".$custom_config['custom_table_primary_key']." != ?";
+			$query .= " AND ".tviewer_quote_identifier($custom_config['custom_table_primary_key'])." != ?";
 			$query_vals[] = $id;
 		}
 	}
