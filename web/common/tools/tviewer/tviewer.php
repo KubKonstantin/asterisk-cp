@@ -39,6 +39,15 @@ if (!isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']][
 }
 else {
 	$table=$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table'];
+	if (isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['auto_columns']) &&
+			$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['auto_columns'] &&
+			isset($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['auto_columns_func']) &&
+			function_exists($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['auto_columns_func'])) {
+		$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['auto_columns_func'](
+			$link,
+			$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]
+		);
+	}
 }
 
 ##############################

@@ -29,18 +29,18 @@ foreach ($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['c
 	if (isset($_SESSION[$key]))
 		if ($_SESSION[$key] != "") {
 			if ($value["type"] == "text" && (!isset($value['search_exact_match']) || !$value['search_exact_match'])) {
-				$where.=" and ".$key." like ?";
+				$where.=" and ".tviewer_quote_identifier($key)." like ?";
 				$qvalues[] = "%".$_SESSION[$key]."%";
 			} else {
-				$where.=" and ".$key." = ?";
+				$where.=" and ".tviewer_quote_identifier($key)." = ?";
 				$qvalues[] = $_SESSION[$key];
 			}
 
 		}
 }
 
-$query_ct = "select count(".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key'].") 
-			from ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table'];
+$query_ct = "select count(".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key']).") 
+			from ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table']);
 
 $total_records = $link->query($query_ct);
 if($total_records === false) {
@@ -48,8 +48,8 @@ if($total_records === false) {
 }
 
 
-$query_fl =	"select count(".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key'].") 
-		from ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table']."
+$query_fl =	"select count(".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_primary_key']).") 
+		from ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table'])."
 		where ".$where;
 
 $stm = $link->prepare($query_fl);
@@ -76,10 +76,10 @@ if ($filtered_records > 0) {
 	}
 	$start_limit=($page-1)*$res_no;
 
-	$query = 	"select ".implode(",",array_keys($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_column_defs']))." 
-		from ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table']." 
+	$query = 	"select ".implode(",",tviewer_quote_identifier_list(array_keys($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_column_defs'])))." 
+		from ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table'])." 
 		where ".$where." 
-		order by ".$custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_order_by']." 
+		order by ".tviewer_quote_identifier($custom_config[$module_id][$_SESSION[$module_id]['submenu_item_id']]['custom_table_order_by'])." 
 		LIMIT ".$res_no." 
 		OFFSET ".$start_limit;
 	
