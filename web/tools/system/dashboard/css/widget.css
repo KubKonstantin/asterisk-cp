@@ -116,7 +116,7 @@ body {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {color:#1bbd9b;}
+.dropdown-content a:hover {color:#c75a00;}
 .dropdown-content a:last-child {border-bottom: unset;}
 
 

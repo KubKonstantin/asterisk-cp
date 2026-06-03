@@ -42,7 +42,7 @@ for ($i=0;$i<count($mi_connectors);$i++){
 	$message=mi_command($command, NULL, $mi_connectors[$i], $errors);
 
 	if (empty($errors)) {
-		echo "<font color='green'><b>Success</b></font>";
+		echo "<font color='#c75a00'><b>Success</b></font>";
 	}
 	echo "<br>";
 }

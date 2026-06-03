@@ -1,7 +1,7 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
 	<tr>
     	<td class="breadcrumb">
-        	<?php print "System / ".$custom_config[$module_id]['custom_name']." / ".$_SESSION['permission'];
+        	<?php print get_group_name()." / ".$custom_config[$module_id]['custom_name']." / ".$_SESSION['permission'];
         	?>
 			<td align=right style="border-bottom: 1px solid #ccc!important">
 				<a  onclick="top.frames['main_body'].location.href='../../../tools/admin/tools_config/tools_config.php?action=edit_tools';" href="#"   id="config_admin"></a>

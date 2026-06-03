@@ -177,6 +177,151 @@ $config_modules 	= array (
             ),
 		)
 	),
+	"pjsip"		=> array (
+		"enabled"	=> true,
+		"name"		=> "PJSIP",
+		"icon"		=> "images/icon-system.svg",
+		"modules"	=> array (
+			"ps_endpoints"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Endpoints",
+				"path"		=> "asterisk/ps_endpoints"
+			),
+			"ps_auths"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Auths",
+				"path"		=> "asterisk/ps_auths"
+			),
+			"ps_aors"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP AORs",
+				"path"		=> "asterisk/ps_aors"
+			),
+			"ps_contacts"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Contacts",
+				"path"		=> "asterisk/ps_contacts"
+			),
+			"ps_transports"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Transports",
+				"path"		=> "asterisk/ps_transports"
+			),
+			"ps_registrations"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Registrations",
+				"path"		=> "asterisk/ps_registrations"
+			),
+			"ps_endpoint_id_ips"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Identify",
+				"path"		=> "asterisk/ps_endpoint_id_ips"
+			),
+			"ps_domain_aliases"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Domain Aliases",
+				"path"		=> "asterisk/ps_domain_aliases"
+			),
+			"ps_globals"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Globals",
+				"path"		=> "asterisk/ps_globals"
+			),
+			"ps_systems"	=> array (
+				"enabled"	=> true,
+				"name"		=> "PJSIP Systems",
+				"path"		=> "asterisk/ps_systems"
+			),
+			"ps_asterisk_publications"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Asterisk Publications",
+				"path"		=> "asterisk/ps_asterisk_publications"
+			),
+			"ps_inbound_publications"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Inbound Publications",
+				"path"		=> "asterisk/ps_inbound_publications"
+			),
+			"ps_outbound_publishes"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Outbound Publishes",
+				"path"		=> "asterisk/ps_outbound_publishes"
+			),
+			"ps_resource_list"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Resource Lists",
+				"path"		=> "asterisk/ps_resource_list"
+			),
+			"ps_subscription_persistence"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Subscription Persistence",
+				"path"		=> "asterisk/ps_subscription_persistence"
+			),
+		)
+	),
+	"asterisk"		=> array (
+		"enabled"	=> true,
+		"name"		=> "Asterisk",
+		"icon"		=> "images/icon-system.svg",
+		"modules"	=> array (
+			"extensions"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Dialplan Extensions"
+			),
+			"sippeers"	=> array (
+				"enabled"	=> true,
+				"name"		=> "SIP Peers"
+			),
+			"iaxfriends"	=> array (
+				"enabled"	=> true,
+				"name"		=> "IAX Friends"
+			),
+			"queues"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Queues"
+			),
+			"queue_members"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Queue Members"
+			),
+			"queue_rules"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Queue Rules"
+			),
+			"queue_log"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Queue Log"
+			),
+			"voicemail"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Voicemail"
+			),
+			"musiconhold"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Music On Hold"
+			),
+			"musiconhold_entry"	=> array (
+				"enabled"	=> true,
+				"name"		=> "MOH Entries"
+			),
+			"meetme"	=> array (
+				"enabled"	=> true,
+				"name"		=> "MeetMe"
+			),
+			"cdr"	=> array (
+				"enabled"	=> true,
+				"name"		=> "CDR"
+			),
+			"stir_tn"	=> array (
+				"enabled"	=> true,
+				"name"		=> "STIR/SHAKEN TN"
+			),
+			"alembic_version_config"	=> array (
+				"enabled"	=> true,
+				"name"		=> "Alembic Version"
+			),
+		)
+	)
 );
 
 

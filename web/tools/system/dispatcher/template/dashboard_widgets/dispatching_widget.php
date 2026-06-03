@@ -43,7 +43,7 @@ class dispatching_widget extends widget
         width: 180px; height:20px; margin: auto; margin-left: 30px; font-weight: bolder;" cellspacing="2" cellpadding="2" border="0">
       ');
     echo ('
-      <tr><td class="rowEven">Available: </td><td><span style="color:green; font-weight: 900;">'.$this->active.'</span></td></tr>');
+      <tr><td class="rowEven">Available: </td><td><span style="color:#c75a00; font-weight: 900;">'.$this->active.'</span></td></tr>');
     if ($this->inactive >0) {
       echo ('<tr><td class="rowEven">Inactive: </td><td><span style="color:red; font-weight: 900;">'.$this->inactive.'</span></td></tr>');
     }
