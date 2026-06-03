@@ -1,11 +1,13 @@
 <?php
 /*
- * Generic table viewer configuration for the Asterisk realtime schema.
+ * Shared table viewer configuration for Asterisk realtime tables.
+ *
+ * This file is included by both the legacy aggregate realtime module and by
+ * per-table modules under config/tools/asterisk/<table>/.
  */
 
-$module_id = "realtime";
-$custom_config[$module_id] = array();
-$custom_config[$module_id]['custom_name'] = "Asterisk Realtime";
+if (!isset($module_id))
+	$module_id = "realtime";
 
 $asterisk_realtime_tables = array(
 	"ps_endpoints" => array("label" => "PJSIP Endpoints", "pk" => "id"),
@@ -28,23 +30,27 @@ $asterisk_realtime_tables = array(
 	"iaxfriends" => array("label" => "IAX Friends", "pk" => "id"),
 	"queues" => array("label" => "Queues", "pk" => "name"),
 	"queue_members" => array("label" => "Queue Members", "pk" => "uniqueid"),
-	"queue_rules" => array("label" => "Queue Rules", "pk" => "rule_name"),
+	"queue_rules" => array("label" => "Queue Rules", "pk" => "rule_name", "readonly" => true),
 	"queue_log" => array("label" => "Queue Log", "pk" => "callid", "readonly" => true),
 	"voicemail" => array("label" => "Voicemail", "pk" => "uniqueid"),
 	"musiconhold" => array("label" => "Music On Hold", "pk" => "name"),
-	"musiconhold_entry" => array("label" => "MOH Entries", "pk" => "name"),
+	"musiconhold_entry" => array("label" => "MOH Entries", "pk" => "name", "readonly" => true),
 	"meetme" => array("label" => "MeetMe", "pk" => "bookid"),
 	"cdr" => array("label" => "CDR", "pk" => "uniqueid", "readonly" => true),
 	"stir_tn" => array("label" => "STIR/SHAKEN TN", "pk" => "id"),
-	"alembic_version_config" => array("label" => "Alembic Version", "pk" => "version_num")
+	"alembic_version_config" => array("label" => "Alembic Version", "pk" => "version_num"),
 );
 
-$custom_config[$module_id]['submenu_items'] = array();
-$submenu_id = 0;
-foreach ($asterisk_realtime_tables as $table => $table_config) {
-	$custom_config[$module_id]['submenu_items'][$submenu_id] = $table_config['label'];
+function asterisk_realtime_pretty_header($column)
+{
+	return ucwords(str_replace(array("_", "-", "@"), " ", $column));
+}
+
+function asterisk_realtime_table_config($table, $table_config)
+{
 	$is_readonly = isset($table_config['readonly']) && $table_config['readonly'];
-	$custom_config[$module_id][$submenu_id] = array(
+
+	return array(
 		"custom_table" => $table,
 		"custom_table_primary_key" => $table_config['pk'],
 		"custom_table_order_by" => $table_config['pk'],
@@ -87,12 +93,22 @@ foreach ($asterisk_realtime_tables as $table => $table_config) {
 		"reload" => false,
 		"readonly_table" => $is_readonly
 	);
-	$submenu_id++;
 }
 
-function asterisk_realtime_pretty_header($column)
-{
-	return ucwords(str_replace(array("_", "-", "@"), " ", $column));
+$custom_config[$module_id] = array();
+
+if (isset($asterisk_realtime_tables[$module_id])) {
+	$custom_config[$module_id]['custom_name'] = $asterisk_realtime_tables[$module_id]['label'];
+	$custom_config[$module_id][0] = asterisk_realtime_table_config($module_id, $asterisk_realtime_tables[$module_id]);
+} else {
+	$custom_config[$module_id]['custom_name'] = "Asterisk Realtime";
+	$custom_config[$module_id]['submenu_items'] = array();
+	$submenu_id = 0;
+	foreach ($asterisk_realtime_tables as $table => $table_config) {
+		$custom_config[$module_id]['submenu_items'][$submenu_id] = $table_config['label'];
+		$custom_config[$module_id][$submenu_id] = asterisk_realtime_table_config($table, $table_config);
+		$submenu_id++;
+	}
 }
 
 function asterisk_realtime_build_columns($link, &$table_config)
