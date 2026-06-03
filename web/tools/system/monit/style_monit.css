@@ -70,7 +70,7 @@ table tr:last-child > th:last-child {
 	padding-bottom: 10px;
 	border-spacing: 0px;
 	border: 0px;
-	color: #1cbe9a;
+	color: #c75a00;
 }
 
 .ttable th {
@@ -180,7 +180,7 @@ a.exampleButton:hover {
 	font-weight: bold;
 	font-size: 20px;
 	padding-bottom: 20px;
-	color: #1cbe9a;
+	color: #c75a00;
 }
 
 .sectionTitle {
@@ -189,7 +189,7 @@ a.exampleButton:hover {
 	font-size: 17px;
 	padding-bottom: 17px;
 	padding-left: 10px;
-	color: #1cbe9a;
+	color: #c75a00;
 }
 
 .listTitle {
@@ -198,14 +198,14 @@ a.exampleButton:hover {
 	font-size: 15px;
 	padding-bottom: 10px;
 	padding-bottom: 10px;
-	color: #1cbe9a;
+	color: #c75a00;
 }
 
 
 .ButtonLink, .searchButton, .formButton{
 	padding: 10px 20px;
-	border: 1px solid #1cbe9a;
-	background: #1cbe9a;
+	border: 1px solid #c75a00;
+	background: #c75a00;
 	color: #fff;
 	border-radius: 5px;
 	margin: 20px;
@@ -221,8 +221,8 @@ a.exampleButton:hover {
 
 .inlineButton{
 	padding: 7px 0px;
-	border: 1px solid #1cbe9a;
-	background: #1cbe9a;
+	border: 1px solid #c75a00;
+	background: #c75a00;
 	color: #fff;
 	border-radius: 5px;
 	margin: 0px;
@@ -236,18 +236,18 @@ a.exampleButton:hover {
 }
 
 .ButtonLink:hover, .searchButton:hover, .formButton:hover, .inlineButton:hover {
-	background: #16a686
+	background: #a94700
 }
 
 .searchButton:last-child{
 	background: #fff;
-	color: #1cbe9a;
+	color: #c75a00;
 	border-color: #fff;
 }
 .searchButton:first-child{
-	background: #1cbe9a;
+	background: #c75a00;
 	color: #fff;
-	border-color: #1cbe9a;
+	border-color: #c75a00;
 }
 
 .formButton[name="delete"] {
@@ -277,11 +277,11 @@ formButton[disabled]{
 }
 
 .searchButton:last-child:hover {
-	color: #16a686
+	color: #a94700
 }
 
 .searchButton:first-child:hover{
-	background: #16a686;
+	background: #a94700;
 	color: #fff;
 }
 
@@ -371,7 +371,7 @@ formButton[disabled]{
 }
 a.pageList {
 	font-size: 10px;
-	color: #1cbe9a;
+	color: #c75a00;
 	text-decoration: none;
 }
 a.pageList:hover {
@@ -443,7 +443,7 @@ fieldset {
 }
 
 fieldset legend {
-    background: #1cbe9a;
+    background: #c75a00;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e8ff', endColorstr='#5eaeff',GradientType=0 ); /* IE6-9 */
     color: white;
     padding: 5px 10px ;

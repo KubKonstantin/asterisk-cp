@@ -38,7 +38,7 @@ class gateways_widget extends widget
       ');
     echo ('
       <tr>
-      <td class="rowEven">Available: </td><td><span style="color:green; font-weight: 900;">'.$this->available.'</span></td></tr>');
+      <td class="rowEven">Available: </td><td><span style="color:#c75a00; font-weight: 900;">'.$this->available.'</span></td></tr>');
     if ($this->inactive > 0) {
       echo ('<tr><td class="rowEven">Inactive: </td><td><span style="color:red; font-weight: 900;">'.$this->inactive.'</span></td></tr>');
       $this->set_status(widget::STATUS_CRIT);

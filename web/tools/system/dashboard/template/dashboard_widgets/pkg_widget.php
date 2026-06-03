@@ -52,7 +52,7 @@ class pkg_widget extends widget
         $style = "color : red; ";
       else if ($info['value'] > $this->warning)
         $style = "color : orange; ";
-      else $style = "color : green;";
+      else $style = "color : #c75a00;";
       $style .= "font-weight: 900; ";
       echo ('
       <tr>

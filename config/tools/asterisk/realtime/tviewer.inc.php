@@ -10,7 +10,12 @@ if (!isset($module_id))
 	$module_id = "realtime";
 
 $asterisk_realtime_tables = array(
-	"ps_endpoints" => array("label" => "PJSIP Endpoints", "pk" => "id"),
+	"ps_endpoints" => array(
+		"label" => "PJSIP Endpoints",
+		"pk" => "id",
+		"visible_columns" => array("id", "transport", "aors", "auth", "context", "disallow", "allow", "direct_media", "dtmf_mode", "callerid", "mailboxes", "outbound_auth", "rewrite_contact", "force_rport", "rtp_symmetric", "webrtc"),
+		"search_columns" => array("id", "transport", "aors", "auth", "context", "callerid", "mailboxes", "outbound_auth")
+	),
 	"ps_auths" => array("label" => "PJSIP Auths", "pk" => "id"),
 	"ps_aors" => array("label" => "PJSIP AORs", "pk" => "id"),
 	"ps_contacts" => array("label" => "PJSIP Contacts", "pk" => "id"),
@@ -129,6 +134,8 @@ function asterisk_realtime_build_columns($link, &$table_config)
 		$is_textarea = strpos($type, 'text') !== false || preg_match('/varchar\((\d+)\)/', $type, $match) && (int)$match[1] > 255;
 		$is_required = ($column['Null'] === 'NO' && $column['Default'] === null && !$is_auto_increment);
 		$is_readonly_table = isset($table_config['readonly_table']) && $table_config['readonly_table'];
+		$is_visible = !isset($table_config['visible_columns']) || in_array($name, $table_config['visible_columns']);
+		$is_searchable = (!$is_textarea && (!isset($table_config['search_columns']) || in_array($name, $table_config['search_columns'])));
 
 		$table_config['custom_table_column_defs'][$name] = array(
 			"header" => asterisk_realtime_pretty_header($name),
@@ -138,8 +145,8 @@ function asterisk_realtime_build_columns($link, &$table_config)
 			"is_optional" => $is_required ? "n" : "y",
 			"show_in_add_form" => !$is_readonly_table && !$is_auto_increment,
 			"show_in_edit_form" => !$is_readonly_table && !$is_auto_increment,
-			"searchable" => !$is_textarea,
-			"visible" => true,
+			"searchable" => $is_searchable,
+			"visible" => $is_visible,
 			"keep_empty_str_val" => $column['Null'] === 'NO'
 		);
 	}

@@ -187,7 +187,7 @@ cursor: pointer;
 .menu:hover{background-color: #374d66;}
 .menu:active{background-color: #374d66;}
 .menu_active{
-background-color: #1bbd9b;
+background-color: #c75a00;
 padding: 20px 30px;
 cursor: pointer;
 }
@@ -208,7 +208,7 @@ cursor: pointer;
 border-bottom: 1px solid #394f68;
 }
 a.submenuItem:hover {color: #fff; background: #263441;}
-a.submenuItemActive {color: #1bbd9b;}
+a.submenuItemActive {color: #c75a00;}
 .breadcrumb{
 	border-bottom: 1px solid #ccc;
     padding-bottom: 13px;
